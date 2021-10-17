@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+       
         #container {
-            background-color: orange;
+            background-color: rgb(13, 17, 39);
             padding: 20px;
         }
 
@@ -17,12 +18,15 @@
             padding: 2px;
             border-radius: 150px;
             border: 2px solid black;
+            box-shadow: 5px 5px 5px  rgb(2, 93, 116);
         }
 
         button {
             border: 2px solid black;
-            background-color: aliceblue;
+            background-color: rgb(8, 45, 78);
             border-radius: 150px;
+            color: beige;
+            box-shadow: 5px 5px 5px  rgb(2, 93, 116);
         }
 
         #moviesdata {
@@ -30,7 +34,7 @@
             padding: 2%;
             display: flex;
             justify-content: center;
-
+            color: aliceblue;
             max-width: 100%;
 
         }
@@ -38,6 +42,10 @@
         #moviesdata img {
             max-width: 90%;
             border-radius: 5%;
+            box-shadow: 5px 5px 5px  rgb(2, 93, 116);
+        }
+        #moviesdata>div:nth-child(2){
+            box-shadow: 1px 1px 1px  rgb(2, 93, 116);
         }
     </style>
 </head>
@@ -71,11 +79,8 @@
                 let image = document.createElement("img")
                 image.src = "https://tse4.mm.bing.net/th?id=OIP.Db8i_HwdqlKRZXH_Q8z4ZQHaEy&pid=Api&P=0&w=249&h=162"
 
-
-
-
                 moviesdata.append(image);
-                moviesdata.style.backgroundColor = "darkgray";
+                moviesdata.style.backgroundColor =  "rgb(13, 17, 39)";
 
             }
             else {
@@ -116,6 +121,6 @@
         div1.append(img)
         div2.append(title, relese, rating, Votes, plot, btn)
         moviesdata.append(div1, div2);
-        moviesdata.style.backgroundColor = "darkgray";
+        moviesdata.style.backgroundColor =  "rgb(13, 17, 39)";
     }
 </script>
