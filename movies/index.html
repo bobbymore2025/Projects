@@ -26,18 +26,18 @@
         }
 
         #moviesdata {
-          
-            padding:2%;
+
+            padding: 2%;
             display: flex;
             justify-content: center;
-          
+
             max-width: 100%;
-          
+
         }
 
-        #moviesdata  img {
-          max-width: 90%;
-          border-radius:5%;
+        #moviesdata img {
+            max-width: 90%;
+            border-radius: 5%;
         }
     </style>
 </head>
@@ -57,24 +57,44 @@
 <script>
     let moviesdata = document.getElementById("moviesdata");
     async function searchMovie() {
-        let movies = document.getElementById("movies").value;
-        let res = await fetch(
-            `http://www.omdbapi.com/?t=${movies}&apikey=318b9b77`
+        try {
+            let movies = document.getElementById("movies").value;
+            let res = await fetch(
+                `http://www.omdbapi.com/?t=${movies}&apikey=318b9b77`
 
-        );
-        let data = await res.json();
-        console.log(data);
-        showMovies(data);
+            );
+
+            let data = await res.json();
+            console.log(data);
+            if (data.Response == 'False') {
+                moviesdata.innerHTML = null;
+                let image = document.createElement("img")
+                image.src = "https://tse4.mm.bing.net/th?id=OIP.Db8i_HwdqlKRZXH_Q8z4ZQHaEy&pid=Api&P=0&w=249&h=162"
+
+
+
+
+                moviesdata.append(image);
+                moviesdata.style.backgroundColor = "darkgray";
+
+            }
+            else {
+                showMovies(data);
+            }
+        }
+        catch (e) {
+            console.log("Err", e)
+        }
     }
 
     function showMovies(movie) {
         moviesdata.innerHTML = null;
 
-    
-      let div1 =document.createElement("div");
-      let div2 =document.createElement("div");
+
+        let div1 = document.createElement("div");
+        let div2 = document.createElement("div");
         let title = document.createElement("p");
-        title.innerText = "Name:" + " "+ movie.Title;
+        title.innerText = "Name:" + " " + movie.Title;
 
         let img = document.createElement("img");
         img.src = movie.Poster;
@@ -82,20 +102,20 @@
         let relese = document.createElement("p");
         relese.innerText = "Relesed On:" + " " + movie.Released;
 
-        let plot=document.createElement("p");
-         plot.innerText="Description:"+" "+movie.Plot;
-       
-         let rating = document.createElement("p");
+        let plot = document.createElement("p");
+        plot.innerText = "Description:" + " " + movie.Plot;
+
+        let rating = document.createElement("p");
         rating.innerText = "IMDB Rating:" + " " + movie.imdbRating;
-         
-        let Votes= document.createElement("p");
+
+        let Votes = document.createElement("p");
         Votes.innerText = "Total Votes:" + " " + movie.imdbVotes;
-        let btn=document.createElement("button");
-        btn.innerText="Watch Now";
+        let btn = document.createElement("button");
+        btn.innerText = "Watch Now";
 
         div1.append(img)
-        div2.append(title, relese,rating,Votes,plot,btn)
-        moviesdata.append(div1,div2);
-        moviesdata.style.backgroundColor="darkgray";
+        div2.append(title, relese, rating, Votes, plot, btn)
+        moviesdata.append(div1, div2);
+        moviesdata.style.backgroundColor = "darkgray";
     }
 </script>
