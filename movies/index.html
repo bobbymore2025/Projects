@@ -111,7 +111,15 @@
         plot.innerText = "Description:" + " " + movie.Plot;
 
         let rating = document.createElement("p");
-        rating.innerText = "IMDB Rating:" + " " + movie.imdbRating;
+        let rate=Number(movie.imdbRating);
+       
+       
+         if(rate >= 8.5){
+            rating.innerText = "IMDB Rating:" + " " + movie.imdbRating +  " / " + "Tag : Recommended";
+         }
+         else{
+            rating.innerText = "IMDB Rating:" + " " + movie.imdbRating;
+         }
 
         let Votes = document.createElement("p");
         Votes.innerText = "Total Votes:" + " " + movie.imdbVotes;
