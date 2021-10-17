@@ -116,6 +116,9 @@
        
          if(rate >= 8.5){
             rating.innerText = "IMDB Rating:" + " " + movie.imdbRating +  " / " + "Tag : Recommended";
+            rating.style.backgroundColor="rgb(2, 93, 116)"
+            rating.style.maxWidth="25%"
+            rating.style.borderRadius="3%"
          }
          else{
             rating.innerText = "IMDB Rating:" + " " + movie.imdbRating;
