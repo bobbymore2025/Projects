@@ -52,12 +52,13 @@
 
 <body>
     <div id="container">
-        <input type="text" id="movies" />
+        <input type="text" id="movies" placeholder="Enter Movie Name"/>
         <button onclick="searchMovie()">Search Movie </button>
     </div>
     <p></p>
     <p></p>
     <div id="moviesdata"></div>
+    <div id="displayallmovies"></div>
 
 </body>
 
@@ -133,5 +134,48 @@
         div2.append(title, relese, rating, Votes, plot, btn)
         moviesdata.append(div1, div2);
         moviesdata.style.backgroundColor =  "rgb(13, 17, 39)";
+
+
     }
+    
+    fetch('https://api.themoviedb.org/3/discover/movie?api_key=887eac98957a7736caa0bb27e17dc887&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate')
+       
+    .then(function (res) {
+       
+            return res.json();
+        
+        })
+         
+        .then(function (res) {
+           console.log("res:",res.results)
+            displayallmovies(res.results);
+        
+        });
+    let displaymovies = document.getElementById("displayallmovies");
+    
+    function  displayallmovies(movies) {
+       console.log(movies);
+        movies.forEach(function (movie) {
+
+            let div = document.createElement("div");
+
+            let name = document.createElement("p");
+              name.innerText = movie.original_title;
+
+            let img = document.createElement("img");
+              img.src = movie.poster_path;
+
+            let title = document.createElement("p");
+               title.innerText = movie.title;
+
+               let relese= document.createElement("p");
+               relese.innerText = movie.release_date;
+                 div.append(img,name,relese);
+                 displaymovies.append(div);
+
+        });
+
+    }
+
+
 </script>
