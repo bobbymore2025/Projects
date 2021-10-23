@@ -9,7 +9,7 @@
     <style>
        
         #container {
-            background-color: rgb(13, 17, 39);
+            background-color: rgb(2, 93, 116);
             padding: 20px;
         }
 
@@ -18,19 +18,19 @@
             padding: 2px;
             border-radius: 150px;
             border: 2px solid black;
-            box-shadow: 5px 5px 5px  rgb(2, 93, 116);
+            box-shadow: 5px 5px 5px  rgb(2, 83, 104);
         }
 
         button {
             border: 2px solid black;
-            background-color: rgb(8, 45, 78);
+            background-color: rgb(11, 132, 238);
             border-radius: 150px;
             color: beige;
-            box-shadow: 5px 5px 5px  rgb(2, 93, 116);
+            box-shadow: 5px 5px 5px  rgb(1, 29, 36);
         }
 
         #moviesdata {
-
+            border-radius: 50%;
             padding: 2%;
             display: flex;
             justify-content: center;
@@ -45,11 +45,13 @@
             box-shadow: 5px 5px 5px  rgb(2, 93, 116);
         }
         #moviesdata>div:nth-child(2){
-            box-shadow: 1px 1px 1px  rgb(2, 93, 116);
+          vertical-align: middle;
+          justify-content: center;
         }
         #displayallmovies{
             display:grid;
-            grid-template-columns: 20% 20% 20% 20% 20%;
+            grid-template-columns: 22% 22% 22% 22%;
+            gap: 3%;
             padding:0 2% 0 2% ;
             margin-left: 3%;
             text-shadow: 5px 5px 5px gray;
@@ -59,6 +61,15 @@
             max-width: 80%;
             border-radius: 20px;
             box-shadow: 5px 5px 5px gray;
+        }
+        .details{
+            background-color:#e0e0e0;
+            border-radius: 20px;
+            box-shadow: 10px 10px 10px gray;
+            text-align: center;
+            padding: 10px;
+           
+
         }
     </style>
 </head>
@@ -71,6 +82,8 @@
     <p></p>
     <p></p>
     <div id="moviesdata"></div>
+    <h1 style="margin-left:5% ">Popular Movies</h1>
+    <hr  style="margin-left:5%  color:#e0e0e0 ">
     <div id="displayallmovies"></div>
 
 </body>
@@ -94,7 +107,7 @@
                 image.src = "https://tse4.mm.bing.net/th?id=OIP.Db8i_HwdqlKRZXH_Q8z4ZQHaEy&pid=Api&P=0&w=249&h=162"
 
                 moviesdata.append(image);
-                moviesdata.style.backgroundColor =  "rgb(13, 17, 39)";
+                moviesdata.style.backgroundColor = "rgb(2, 93, 116)"
 
             }
             else {
@@ -146,7 +159,7 @@
         div1.append(img)
         div2.append(title, relese, rating, Votes, plot, btn)
         moviesdata.append(div1, div2);
-        moviesdata.style.backgroundColor =  "rgb(13, 17, 39)";
+        moviesdata.style.backgroundColor =    "rgb(2, 93, 116)"
 
 
     }
@@ -176,13 +189,33 @@
 
             let img = document.createElement("img");
               img.src =`https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+              img.onmouseover=function showdetails(){
+                div.innerHTML=null;
+               div.className="details";
 
-            let title = document.createElement("p");
-               title.innerText = movie.title;
+                let title = document.createElement("p");
+                title.innerText ="Name:" + " "  + movie.title;
+                let relese= document.createElement("p");
+                relese.innerText = "Relese Date:"+" " + movie.release_date;
+                let rating= document.createElement("p");
+                rating.innerText = "Rating:"+" " + movie.vote_average;
+               let totalvotes= document.createElement("p");
+               totalvotes.innerText = "Total Votes :"+" " + movie.vote_count;
+                 div.append(img,name,relese, rating,totalvotes);
 
-               let relese= document.createElement("p");
-               relese.innerText = movie.release_date;
-                 div.append(img,name,relese);
+                                  
+              };
+           img.onmouseout=function showdetails(){
+                div.innerHTML=null;
+                  div.className="";
+                 div.append(img);
+                 
+                                  
+              };
+
+           
+              div.append(img);
+                
                  displaymovies.append(div);
 
         });
