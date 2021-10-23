@@ -16,7 +16,16 @@
 
  <h1>Delete product</h1>
     <input type="text" id="product_id" placeholder="Id">
-    <button onclick=" deleteProduct()">delete</button>
+    <button onclick=" deleteProduct()">DELETE</button>
+
+    <h1>Update Product</h1>
+    <input type="text" id="updateproduct_id" placeholder="Id">
+    <input type="text" id="updatename" placeholder="Name">
+    <input type="number" id="updateprice" placeholder="Price">
+    <button onclick=" UpdateProduct()">UPDATE</button>
+
+
+    
 </body>
 </html><script>
 
@@ -64,7 +73,32 @@ let response = await fetch(`http://localhost:5000/api/products/${id}`,{
              "Content-Type":"application/json",
          }
      });
-    }
-   
+    }  
 
+
+
+    async function UpdateProduct(){
+       
+        let data={
+          id:document.getElementById("updateproduct_id").value,
+          name:document.getElementById("updatename").value,
+          price:document.getElementById("updateprice").value
+         
+          
+      };
+      data=JSON.stringify(data);
+     
+        let id=document.getElementById("updateproduct_id").value;
+    let response = await fetch(`http://localhost:5000/api/products/${id}`,{
+             method:'PUT',
+             body:data,
+             headers:{
+             "Content-Type":"application/json",
+         }
+     });
+    }
+
+
+   
+    
 </script>
