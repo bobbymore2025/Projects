@@ -7,13 +7,14 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Add New Product</h1>
     <input type="text" id="id" placeholder="Id">
     <input type="text" id="name" placeholder="Name">
     <input type="number" id="price" placeholder="Price">
     <button onclick=" addProduct()"> ADD</button>
     <div id="showdata"></div>
 
-
+ <h1>Delete product</h1>
     <input type="text" id="product_id" placeholder="Id">
     <button onclick=" deleteProduct()">delete</button>
 </body>
@@ -64,6 +65,6 @@ let response = await fetch(`http://localhost:5000/api/products/${id}`,{
          }
      });
     }
-
+   
 
 </script>
