@@ -47,6 +47,19 @@
         #moviesdata>div:nth-child(2){
             box-shadow: 1px 1px 1px  rgb(2, 93, 116);
         }
+        #displayallmovies{
+            display:grid;
+            grid-template-columns: 20% 20% 20% 20% 20%;
+            padding:0 2% 0 2% ;
+            margin-left: 3%;
+            text-shadow: 5px 5px 5px gray;
+
+        }
+        #displayallmovies img{
+            max-width: 80%;
+            border-radius: 20px;
+            box-shadow: 5px 5px 5px gray;
+        }
     </style>
 </head>
 
@@ -138,8 +151,7 @@
 
     }
     
-    fetch('https://api.themoviedb.org/3/discover/movie?api_key=887eac98957a7736caa0bb27e17dc887&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate')
-       
+    fetch("https://api.themoviedb.org/3/trending/all/day?api_key=887eac98957a7736caa0bb27e17dc887")
     .then(function (res) {
        
             return res.json();
@@ -163,7 +175,7 @@
               name.innerText = movie.original_title;
 
             let img = document.createElement("img");
-              img.src = movie.poster_path;
+              img.src =`https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
             let title = document.createElement("p");
                title.innerText = movie.title;
