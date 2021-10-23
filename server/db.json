@@ -2,12 +2,23 @@
   "products": [
     {
       "id": "2",
-      "price": "90"
+      "name": "chips",
+      "price": "20"
     },
     {
       "id": "3",
       "name": "kurkure",
       "price": "30"
+    },
+    {
+      "id": "1",
+      "name": "biscuit",
+      "price": "50"
+    },
+    {
+      "id": "4",
+      "name": "juce",
+      "price": "100"
     }
   ]
 }
