@@ -78,12 +78,13 @@
     <div id="container">
         <input type="text" id="movies" placeholder="Enter Movie Name"/>
         <button onclick="searchMovie()">Search Movie </button>
+        <div id="user">user</div>
     </div>
     <p></p>
     <p></p>
     <div id="moviesdata"></div>
     <h1 style="margin-left:5% ">Popular Movies</h1>
-    <hr  style="margin-left:5%  color:#e0e0e0 ">
+    <hr  style="margin-left:5% ;color:#e0e0e0 ">
     <div id="displayallmovies"></div>
 
 </body>
@@ -221,6 +222,14 @@
         });
 
     }
+    let userdetail =  document.getElementById("user");
+      let user=JSON.parse(localStorage.getItem("movie_users"));
+       console.log(user)
+            user.forEach(function(users){
+                if(username===user.username && password === user.password){
+                  userdetails.append(usermame);
+              
 
-
+        }
+    });
 </script>
