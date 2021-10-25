@@ -70,15 +70,21 @@
             padding: 10px;
            
 
+        }#user{
+           
+            margin-left: 50%;
+            color: aliceblue;
         }
     </style>
 </head>
 
 <body>
     <div id="container">
+        <span style="color:aliceblue"><h1>Movies Hub</h1></span>
         <input type="text" id="movies" placeholder="Enter Movie Name"/>
         <button onclick="searchMovie()">Search Movie </button>
-        <div id="user">user</div>
+       <a href="signup.html"><button>Login/Register</button></a>
+        <span id="user">user</span>
     </div>
     <p></p>
     <p></p>
@@ -223,13 +229,12 @@
 
     }
     let userdetail =  document.getElementById("user");
-      let user=JSON.parse(localStorage.getItem("movie_users"));
-       console.log(user)
-            user.forEach(function(users){
-                if(username===user.username && password === user.password){
-                  userdetails.append(usermame);
+      let user=JSON.parse(localStorage.getItem("movies_users"));
+       user.forEach(function(users){
+          userdetail.innerHTML=users.name;
+           
               
+        })
 
-        }
-    });
+    
 </script>

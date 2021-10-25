@@ -296,6 +296,12 @@ button:hover{
 
     }
 
-    
+    let userdetail =  document.getElementById("username");
+      let user=JSON.parse(localStorage.getItem("movies_users"));
+       user.forEach(function(users){
+          userdetail.innerHTML=users.name;
+           
+              
+        })
 
 </script>
