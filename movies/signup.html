@@ -132,12 +132,12 @@
             })
             .then((res) => {
                var data =("res:", res);
-               if (localStorage.getItem("m_users") == null) {
-            localStorage.setItem("m_users", JSON.stringify([]));
+               if (localStorage.getItem("movies_users") == null) {
+               localStorage.setItem("movies_users", JSON.stringify([]));
                    }
-               let arr = JSON.parse(localStorage.getItem("m_users"));
+               let arr = JSON.parse(localStorage.getItem("movies_users"));
                arr.push( data);
-               localStorage.setItem("m_users", JSON.stringify(arr))
+               localStorage.setItem("movies_users", JSON.stringify(arr))
                
             })
             .catch((err) => {
