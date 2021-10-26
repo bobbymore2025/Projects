@@ -1,0 +1,45 @@
+nav{
+    border-bottom:2px solid #2196f3;
+}
+nav>div{
+    display: flex;
+    align-items: center;
+    
+}
+nav>div>:nth-child(1){
+  width:20%;
+
+  justify-content: right;
+  
+}  
+nav>div>:nth-child(2){
+  width:60%;
+  justify-content: center;
+  gap:0px
+} 
+nav>div>:nth-child(2) button{
+    width:70px;
+    height:41px;
+    border-radius: 35px;
+    vertical-align: bottom;
+    background-color: #2196f3;
+}
+nav>div>:nth-child(2) span{
+    vertical-align:middle
+}
+nav>div>:nth-child(3){
+  width:50%;
+ display:flex;
+ gap:20px;
+ justify-content: center;
+}  input {
+    width: 70%;
+    padding: 1%;
+    margin-left: 10%;
+    height: 25px;
+  
+}
+a{
+    color:#2196f3;
+}
+
