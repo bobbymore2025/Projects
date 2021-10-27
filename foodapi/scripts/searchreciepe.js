@@ -1,5 +1,6 @@
   
-async function getData(url){
+async function search(url){
+  
   let res=await fetch(url);
     let data = await res.json();
     return data;
@@ -20,7 +21,7 @@ function appendData(data, container ){
          let img=document.createElement("img");
          img.src=strMealThumb;
          div2.append(img);
-
+       container.append(div1,div2);
         
 
        
@@ -28,4 +29,4 @@ function appendData(data, container ){
 
     })
 }
-export {getData,appendData}
+export { search,appendData}

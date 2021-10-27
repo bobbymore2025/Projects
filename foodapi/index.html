@@ -12,9 +12,10 @@
 <link rel="stylesheet" href="styles/styles.css"> 
 <body>
     <nav id="navbar" >
-        <div id="container"> </div>
-       
+        
     </nav>
+    <div id="container"> </div>
+       
 </body>
 </html>
 
@@ -22,13 +23,25 @@
 
  <script type="module">
   import navbar from "./components/navbar.js";
-   import {getData,appendData} from "./scripts/searchreciepe.js";
+   import { search,appendData} from "./scripts/searchreciepe.js";
   
-  let navbar_div = document.getElementById("navbar");
+   let navbar_div = document.getElementById("navbar");
 
-  navbar_div.innerHTML= navbar();
-  let response=getData(`www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata`)
-    response.then((res)=>{
-        console.log(res)
-    })
+   navbar_div.innerHTML= navbar();
+  
+ window.searchquery=function(){
+    let query = document.getElementById("query").value;
+    
+     let response = search(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
+       response.then((res)=>{
+           let data=res.meals;
+           console.log("data",data);
+      let container=document.getElementById("container");
+       appendData(data,container)
+   })
+ }
+
+
+
+
 </script> 

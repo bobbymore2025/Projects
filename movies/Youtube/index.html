@@ -233,17 +233,17 @@ button:hover{
 </html>
 <script>
     let videos = document.getElementById("videos");
-    async function searchVideos() {
+     async function searchVideos() {
 
         let query = document.getElementById("query").value;
-        let res = await fetch(
+        let res = await fetch (
            ` https://youtube.googleapis.com/youtube/v3/search?q=${query}&type=video&key=AIzaSyAo7S30KpNwbEau9bHRfMHcVmmudH5Q_kw&maxResults=20`
 
 
 
-        );
+        )
         let data = await res.json();
-       console.log("data", data);
+        console.log("data", data);
         appendVideos(data.items);
 
     }

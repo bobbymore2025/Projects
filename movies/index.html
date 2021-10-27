@@ -81,7 +81,7 @@
 <body>
     <div id="container">
         <span style="color:aliceblue"><h1>Movies Hub</h1></span>
-        <input type="text" id="movies" placeholder="Enter Movie Name"/>
+        <input oninput="debounce(main,1000)" type="text" id="movies" placeholder="Enter Movie Name"/>
         <button onclick="searchMovie()">Search Movie </button>
        <a href="signup.html"><button>Login/Register</button></a>
         <span id="user">user</span>

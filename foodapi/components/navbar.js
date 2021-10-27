@@ -5,9 +5,9 @@ function navbar(){
         <a  href="index.html"><span class="material-icons"><h3> HOME</h3></span></a>
        
     </div>
-    <div  >
-        <input type="text" id="query">
-        <button onclick="searchVideos()">Search </button>
+    <div>
+        <input type="text" id="query"/>
+        <button onclick="searchquery()"> Search </button>
       
     </div>
     <div>
@@ -19,7 +19,8 @@ function navbar(){
     </div>
 </div>
 
-</div>`)
+</div>
+       `)
  
 }
 export default navbar
