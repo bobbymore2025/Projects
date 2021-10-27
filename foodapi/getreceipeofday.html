@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="styles/styles.css"> 
 <body>
     <nav id="navbar"></nav>
+    <h1>Reciepe of Day</h1>
+    <div id=container></div>
 </body>
 </html>
 
@@ -17,8 +19,32 @@
 
 <script type="module">
   import navbar from "./components/navbar.js";
- 
+  import { search,appendData} from "./scripts/searchreciepe.js";
+  
   let navbar_div = document.getElementById("navbar");
+
   navbar_div.innerHTML= navbar();
-      
+ 
+
+  let container=document.getElementById("container");
+  
+    let response = search(`https://www.themealdb.com/api/json/v1/1/random.php`);
+      response.then((res)=>{
+          let data=res.meals;
+          console.log("data",data);
+    
+      appendData(data,container)
+  })
+  window.searchquery=function(){
+    let query = document.getElementById("query").value;
+    
+     let response = search(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
+       response.then((res)=>{
+           let data=res.meals;
+           console.log("data",data);
+      let container=document.getElementById("container");
+       appendData(data,container)
+   })
+ }
+
 </script>

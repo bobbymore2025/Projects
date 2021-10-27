@@ -14,9 +14,10 @@
     <nav id="navbar" >
         
     </nav>
-    <hr>
+   
+    <h1></h1>
     <div id="container"> </div>
-       
+     <div id="latest"></div>  
 </body>
 </html>
 
@@ -24,7 +25,7 @@
 
  <script type="module">
   import navbar from "./components/navbar.js";
-   import { search,appendData} from "./scripts/searchreciepe.js";
+   import { search,appendData, appendlatest} from "./scripts/searchreciepe.js";
   
    let navbar_div = document.getElementById("navbar");
 
@@ -42,7 +43,15 @@
    })
  }
 
-
+ let container=document.getElementById("latest");
+  
+  let response = search(`https://www.themealdb.com/api/json/v1/1/filter.php?a=Indian`);
+    response.then((res)=>{
+        let data=res.meals;
+        console.log("data",data);
+  
+        appendlatest(data,container)
+})   
 
 
 </script> 

@@ -9,6 +9,7 @@ async function search(url) {
 
 function appendData(data, container) {
   container.innerHTML=null;
+  
   data.forEach(({ strArea, strMeal, strMealThumb, strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strMeasure1,
     strMeasure2, strMeasure3, strMeasure4, strMeasure5 ,strInstructions}) => {
 
@@ -108,4 +109,18 @@ function appendData(data, container) {
 
   })
 }
-export { search, appendData }
+  function appendlatest(data, container){
+     container.innerHTML=null;
+     data.forEach(({ strMeal, strMealThumb})=>{
+      let div = document.createElement("div");
+  
+      let title = document.createElement("p");
+      title.innerText ="Name:" + " " + " " + strMeal;
+      let img = document.createElement("img");
+      img.src = strMealThumb;
+      div.append(img,title);
+      container.append(div);
+
+  })
+}
+export { search, appendData ,appendlatest}
