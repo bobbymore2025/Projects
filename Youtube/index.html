@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+       
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 30px;
+            /* Preferred icon size */
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+
+
+            -webkit-font-smoothing: antialiased;
+
+            text-rendering: optimizeLegibility;
+
+
+            -moz-osx-font-smoothing: grayscale;
+
+
+            font-feature-settings: 'liga';
+        }
+
+       
+
+        #videos {
+            width: 98%;
+             display: grid;
+             grid-template-columns: repeat(4, 23%);
+             gap: 2%;
+             background-color:#eeeeee; 
+             margin-left: 2%;
+          
+             padding:1%;
+        }
+button{
+    
+    height:30px;
+    border-radius: 50px;
+    border:none;
+    cursor: pointer;
+
+
+}
+button:hover{
+    background-color: #e0e0e0;
+}
+
+        input {
+            width: 70%;
+            padding: 1%;
+            margin-left: 10%;
+            height: 25px;
+          
+        }
+        nav>div{
+            display: flex;
+            align-items: center;
+            
+        }
+        nav>div>:nth-child(1){
+          width:20%;
+
+          justify-content: right;
+          
+        }  
+        nav>div>:nth-child(2){
+          width:60%;
+          justify-content: center;
+          gap:0px
+        } 
+        nav>div>:nth-child(2) button{
+            width:70px;
+            height:45px;
+            border-radius: 0px;
+            vertical-align: bottom;
+        }
+        nav>div>:nth-child(2) span{
+            vertical-align:middle
+        }
+        nav>div>:nth-child(3){
+          width:20%;
+         display:flex;
+         gap:20px;
+         justify-content: center;
+        }
+        #container{
+            max-width: 100%;
+            height:500px;
+            display:flex;
+            gap:2px;
+        }
+        #container>div:nth-child(1){
+            width:20%;  
+          
+
+        } 
+     
+        #container>div:nth-child(1)>div{
+            width:100%;
+        
+            height:50px;
+            display:flex;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size:16px;
+            color:#424242;
+           
+        }
+        #container>div:nth-child(1)>div:hover{
+            background-color: #eeeeee;
+            color: black;
+           
+        }
+       
+        #container>div:nth-child(2){
+            width:79%; 
+            
+          
+}
+        #container>div:nth-child(2)>div:nth-child(2){
+            width:99%;
+            margin-left: 2%;
+} 
+   
+#container>div:nth-child(2)>div:nth-child(1) {
+          display:flex;
+           gap:7px;
+           width:98%; 
+           padding:5px;
+           margin-left: 2%;
+           border-bottom: 1px solid darkgrey;
+           
+}
+    </style>
+
+</head>
+
+<body>
+    <nav >
+        <div>
+            <div >
+                <span class="material-icons"> menu </span>
+                <a >
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.MruU_1fBIrki4bXAqbJTHgHaB2&pid=Api&P=0&w=446&h=112"
+                        alt="" width="90" height="30" class="d-inline-block align-text-top">
+                </a>
+            </div>
+            <div  >
+                <input type="text" id="query">
+                <button onclick="searchVideos()"> <span class="material-icons">search</span></button>
+                <span class="material-icons"> mic </span>
+            </div>
+            <div>
+                <span class="material-icons">video_call</span>
+                <span class="material-icons">apps</span>
+                <span class="material-icons">notifications</span>
+                <span id="username">
+            </div>
+        </div>
+
+        </div>
+    </nav>
+
+
+
+
+
+
+    <hr style="margin-left: 22%;">
+    <div id="container">
+      <div > 
+       <div>  <div class="material-icons"> home </div>&nbsp&nbsp&nbsp&nbsp&nbspHome</div>
+       <div>  <div class="material-icons"> explore </div>&nbsp&nbsp&nbsp&nbsp&nbspExplore</div>
+       <div>  <div class="material-icons"> subscriptions</div>&nbsp&nbsp&nbsp&nbsp&nbspSubscription</div>
+       <hr>
+       <div>  <div class="material-icons">video_library </div>&nbsp&nbsp&nbsp&nbsp&nbspLibrary</div>
+       <div>  <div class="material-icons">history</div>&nbsp&nbsp&nbsp&nbsp&nbspHistory</div>
+       <div>  <div class="material-icons">watch_later </div>&nbsp&nbsp&nbsp&nbsp&nbspWatch Later</div>
+       <div>  <div class="material-icons"> thumb_up </div>&nbsp&nbsp&nbsp&nbsp&nbspLiked Video</div>
+       <hr>
+       <div>Subscription</div>
+       <div> <div class="material-icons"> supervised_user_circle </div>&nbsp&nbsp&nbsp&nbsp&nbspMasai School</div>
+       <div>  <div class="material-icons">supervised_user_circle </div>&nbsp&nbsp&nbsp&nbsp&nbspTED</div>
+       <div>  <div class="material-icons"> supervised_user_circle</div>&nbsp&nbsp&nbsp&nbsp&nbspTechnical Guruji</div>
+       <div> <div class="material-icons"> supervised_user_circle </div>&nbsp&nbsp&nbsp&nbsp&nbspBrowse Channels</div>
+       <div></div>
+
+      </div>
+       <div>
+       <div >
+        <button onclick="changecolor()"id="changecolor" >All</button>
+        <button>Live</button>
+        <button>Computer Science </button>
+        <button>PUBG MObile </button>
+         <button> HTML </button>
+        <button >Graphics Design</button>
+        <button >Cricket</button>
+        <button >Indian Music</button>
+        <button >Music</button>
+        <button >Recently Uploaded</button>
+        <button >New To You</button>  
+        <button >Wathched</button>
+      
+    </div>
+   
+    <div id="videos"></div>
+   
+    </div>
+       </div>
+      
+      </div>
+   </div>
+   
+
+</body>
+
+</html>
+<script>
+    let videos = document.getElementById("videos");
+     async function searchVideos() {
+
+        let query = document.getElementById("query").value;
+        let res = await fetch (
+           ` https://youtube.googleapis.com/youtube/v3/search?q=${query}&type=video&key=AIzaSyAo7S30KpNwbEau9bHRfMHcVmmudH5Q_kw&maxResults=20`
+
+
+
+        )
+        let data = await res.json();
+        console.log("data", data);
+        appendVideos(data.items);
+
+    }
+
+    function appendVideos(video_data) {
+        videos.innerHTML= null;
+        //destructuring
+        video_data.forEach(({ id: { videoId } }) => {
+            let div = document.createElement("div");
+            //embade Youtube video to html
+
+            div.innerHTML = `<iframe width="240" height="120" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            let title = document.createElement("p");
+            //title.innerText=  ;
+            div.append(title)
+            videos.append(div);
+        });
+
+
+    }
+    function changecolor(){
+       let change=document.getElementById("changecolor");
+       change.style.backgroundColor= "black";
+       change.style.color="white";
+    }
+
+   async function showPopular(){
+    let res = await fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=IN&key=AIzaSyAo7S30KpNwbEau9bHRfMHcVmmudH5Q_kw")
+     let data1=await res.json();
+   //console.log("data1:",data1.items);
+     appendVideos2(data1.items);
+   }
+
+  showPopular();
+  function appendVideos2(video_data) {
+        videos.innerHTML= null;
+        //destructuring
+        video_data.forEach(({ id,snippet:{title}}) => {
+            let div = document.createElement("div");
+            //embade Youtube video to html
+
+            div.innerHTML = `<iframe width="240" height="120" src="https://www.youtube.com/embed/${id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            let name = document.createElement("p");
+            name.innerText=  title;
+          
+            div.append(name)
+            videos.append(div);
+        });
+
+
+    }
+
+    let userdetail =  document.getElementById("username");
+      let user=JSON.parse(localStorage.getItem("movies_users"));
+       user.forEach(function(users){
+          userdetail.innerHTML=users.name;
+           
+              
+        })
+
+</script>
