@@ -81,11 +81,13 @@
 <body>
     <div id="container">
         <span style="color:aliceblue"><h1>Movies Hub</h1></span>
-        <input oninput="debounce(main,1000)" type="text" id="movies" placeholder="Enter Movie Name"/>
+       <input  id="debouncemovie" oninput="debounce(main,1000)" type="text">
+       
         <button onclick="searchMovie()">Search Movie </button>
        <a href="signup.html"><button>Login/Register</button></a>
         <span id="user">user</span>
     </div>
+    <div id="searchmovie"></div></span> 
     <p></p>
     <p></p>
     <div id="moviesdata"></div>
@@ -97,34 +99,64 @@
 
 </html>
 <script>
-    let moviesdata = document.getElementById("moviesdata");
-    async function searchMovie() {
-        try {
-            let movies = document.getElementById("movies").value;
-            let res = await fetch(
-                `http://www.omdbapi.com/?t=${movies}&apikey=318b9b77`
+   
 
-            );
 
-            let data = await res.json();
-            console.log(data);
-            if (data.Response == 'False') {
-                moviesdata.innerHTML = null;
-                let image = document.createElement("img")
-                image.src = "https://tse4.mm.bing.net/th?id=OIP.Db8i_HwdqlKRZXH_Q8z4ZQHaEy&pid=Api&P=0&w=249&h=162"
+    var timerId;
+    let movies_div=document.getElementById("searchmovie")
+async function searchMovie(movie_name){
+    let res =await fetch(`http://www.omdbapi.com/?apikey=318b9b77&s=${movie_name}`);
+    let data=await res.json();
+    return(data);
 
-                moviesdata.append(image);
-                moviesdata.style.backgroundColor = "rgb(2, 93, 116)"
-
-            }
-            else {
-                showMovies(data);
-            }
-        }
-        catch (e) {
-            console.log("Err", e)
-        }
+}
+ function appendMovies(movies){
+     if(movies===undefined){
+         return false;
+     }
+     movies_div.innerHTML=null;
+     movies.forEach(function(movie){
+        let p=document.createElement("p");
+     p.innerText=movie.Title;
+     p.onclick=()=>{
+         showMovies(movie);
+         movies_div.innerHTML=null;
+        };
+     movies_div.append(p)
+    
+     });
+    
+ }
+   async function main(){
+       let name=document.getElementById("debouncemovie").value;
+      if(name.length<3){
+          return false;
+      }
+     
+     
+       let res=await searchMovie(name);
+       console.log("res", res);
+       let movies_data=res.Search
+       appendMovies(movies_data);
+   }
+   
+  function debounce(func,delay){
+     
+    if(timerId){
+    clearTimeout(timerId)
     }
+
+
+
+    timerID=setTimeout(function(){
+        func();
+    },delay);
+       
+
+
+  }
+
+
 
     function showMovies(movie) {
         moviesdata.innerHTML = null;
