@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><style>
+  #navbar{
+      display:flex;
+     
+      background-color: #2196f3;
+  height:50px;
+  align-items: center;
+  padding-left:20Px;
+  color:white;
+    
+  }
+  #navbar>div{
+      display:flex;
+      margin-left:80%;
+      gap:20px;
+  }
+  #container{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: 18% 18% 18% 18% 18%;
+      gap:2%;
+
+  }
+  #container img{
+      max-width: 80%;
+  }
+   button{
+      border: 1px solid black;
+      background-color: #2196f3;
+  }
+        </style>
+    </style>
+</head>
+
+<body>
+    <div id="navbar"> 
+        </div>
+        <div id="container" > </div>
+     
+</body>
+</html>
+<script type="module">
+    import navbar from "./components/navbar.js"
+    import {appenddata , search} from "./scripts/searchfood.js"
+    let nav=document.getElementById("navbar");
+    nav.innerHTML=navbar();
+  let container=document.getElementById("container");
+   let response=search("https://www.themealdb.com/api/json/v1/1/filter.php?c=chicken");
+   response.then((res)=>{
+       console.log(res.meals);
+       let data = res.meals;
+       appenddata(data,container);
+   });
+
+</script>

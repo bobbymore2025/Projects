@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><form id="signinform" onsubmit="signin(event)">
+  
+   
+   
+    <input type="text" id="username" placeholder="username"/>
+    <input type="password" id="password" placeholder="Password"/>
+   
+    <input type="submit"/>
+</form>
+</body>
+</html>
+<script>
+    function signin(e){
+        e.preventDefault()
+        let form=document.getElementById("signinform");
+      let userData={
+         
+          password: form.password.value,
+          username:form.username.value,
+         
+      }
+ let user=JSON.stringify(userData);
+ 
+  fetch("https://masai-api-mocker.herokuapp.com/auth/login",{
+      method:"POST",
+      body:user,
+      headers:{
+           "Content-Type":"application/json"
+      },
+    })
+    .then((res)=>{
+        return res.json();
+    }) 
+     .then((res)=>{
+        let data=res;
+        console.log(data)
+      fetchdata(userData.username , res.token);
+    })
+
+.catch((e)=>{
+    console.log(e)
+})
+
+}
+
+function fetchdata(username,token){
+    fetch(`https://masai-api-mocker.herokuapp.com/user/${username}`,{
+        headers:{
+            "Content-Type":"application/json",
+            Authorization: `Bearer ${token}`,
+
+        },
+    })
+    .then((res)=>{
+        return res.json();
+    }) 
+     .then((res)=>{
+        let data=res;
+})
+
+}
+
+
+    
+</script>
