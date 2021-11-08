@@ -1,8 +1,8 @@
 function navbar(){
     return ` <div>
     <a href="login.html"><span>Login</span></a>
-    <span  href="signup.html">Signup</span>
-    <span  href="menu.html">Menu</span>
+    <a href="signup.html"> <span> Signup</span></a>
+    <a href="index.html"><span>Menu</span></a>
 </div>
 </div>`
 }
